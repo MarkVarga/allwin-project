@@ -1,11 +1,11 @@
 import React from "react";
 
-function Help() {
+const Help: React.FC = () => {
   return (
     <div>
       <h1>This is the help screen</h1>
     </div>
   );
-}
+};
 
 export default Help;
