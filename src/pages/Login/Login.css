@@ -7,8 +7,17 @@
 }
 
 .form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 250px;
   height: 350px;
+  border-radius: 5px;
+  box-shadow: 0 0 1em darkgray;
+}
+
+.form p {
+  text-align: center;
 }
 
 input[type="text"],

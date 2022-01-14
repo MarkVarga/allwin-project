@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/auth";
-import "./Login.css";
+import "../Login/Login.css";
 
-const Login: React.FC = () => {
+const Signup: React.FC = () => {
   const { setUsername } = useContext(AuthContext);
 
   return (
@@ -29,7 +29,7 @@ const Login: React.FC = () => {
             <button type="submit">Login</button>
           </div>
           <p>
-            Not a user? <Link to="/signup">Sign up</Link>
+            Already a user? <Link to="/">Log in</Link>
           </p>
         </form>
       </div>
@@ -37,4 +37,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Signup;
