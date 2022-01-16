@@ -6,20 +6,25 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
+  setPersistence,
+  browserLocalPersistence,
 } from "firebase/auth";
 import { auth } from "../firebase";
 
 const authContext: any = createContext({});
 
 export const AuthContextProvider = ({ children }: any) => {
-  const [user, setUser] = useState("");
+  const [user, setUser]: any = useState("");
 
   const signUp = (email: any, password: any) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const logIn = (email: any, password: any) => {
-    return signInWithEmailAndPassword(auth, email, password);
+    return setPersistence(auth, browserLocalPersistence).then(() => {
+      localStorage.setItem("token", "");
+      return signInWithEmailAndPassword(auth, email, password);
+    });
   };
 
   const googleLogin = () => {
@@ -28,12 +33,16 @@ export const AuthContextProvider = ({ children }: any) => {
   };
 
   const logOut = () => {
+    localStorage.clear();
+    localStorage.setItem("token", "");
+    window.location.reload();
     return signOut(auth);
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser: any) => {
       setUser(currentUser);
+      localStorage.setItem("token", currentUser.uid);
     });
     return () => {
       unsubscribe();

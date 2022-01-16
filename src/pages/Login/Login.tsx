@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "../../components/Form";
 import { useAuthContext } from "../../contexts/auth";
-import "./Login.css";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
