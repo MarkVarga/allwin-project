@@ -1,7 +1,74 @@
+.title-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.title-div h1 {
+  /* text-align: center; */
+  color: black;
+  font-family: "Courier";
+  white-space: nowrap;
+  overflow: hidden;
+  width: 40em;
+  animation: type 4s steps(60, end);
+}
+
+.title-div h1:nth-child(2) {
+  animation: type2 8s steps(60, end);
+}
+
+.title-div span {
+  animation: blink 1s infinite;
+}
+
+@media screen and (max-width: 690px) {
+  .title-div h1 {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .title-div h1 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .title-div h1 {
+    font-size: 16px;
+  }
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 0;
+  }
+  100% {
+    width: 100;
+  }
+}
+
+@keyframes blink {
+  to {
+    opacity: 0;
+  }
+}
+
 .login {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
 }
@@ -10,10 +77,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 250px;
   height: 350px;
   border-radius: 5px;
   box-shadow: 0 0 1em darkgray;
+  margin-top: 20px;
 }
 
 .form p {
@@ -30,14 +99,15 @@ button[type="submit"] {
   margin-top: 10px;
   cursor: pointer;
   font-size: 15px;
-  background: #01d28e;
-  border: 1px solid #01d28e;
+  background: #0163d2;
+  border-radius: 5px;
+  border: none;
   color: #fff;
   padding: 10px 20px;
 }
 
 button[type="submit"]:hover {
-  background: #6cf0c2;
+  background: #55a4ff;
 }
 
 .button-container {
@@ -55,14 +125,15 @@ button[type="submit"]:hover {
   display: flex;
 }
 
-.error {
+.error-message {
   color: red;
   font-size: 12px;
+  margin-top: -5px;
 }
 
-.title {
-  font-size: 25px;
-  margin-bottom: 20px;
+.button-container button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
 }
 
 .input-container {
