@@ -50,6 +50,8 @@ const Signup: React.FC = () => {
         passwordErrorMessage={passwordErrorMessage}
         setPasswordErrorMessage={setPasswordErrorMessage}
         passwordValidationPattern={passwordValidationPattern}
+        generalError={generalError}
+        generalErrorMessage={generalErrorMessage}
         handleSubmit={handleSubmit}
       />
     </div>

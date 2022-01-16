@@ -24,6 +24,22 @@ const Form = ({
 }: any) => {
   const location = useLocation();
 
+  const passwordOnChangeHandler = (e: any) => {
+    setPassword(e.target.value);
+    setTimeout(() => {
+      if (password === "") {
+        setPasswordError(true);
+        setPasswordErrorMessage("this field cannot be empty");
+      } else if (password.match(passwordValidationPattern) == null) {
+        setPasswordError(true);
+        setPasswordErrorMessage("this password is not valid");
+      } else {
+        setPasswordError(false);
+        setPasswordErrorMessage("");
+      }
+    }, 1000);
+  };
+
   return (
     <div className="form">
       <form onSubmit={handleSubmit}>
@@ -56,9 +72,7 @@ const Form = ({
           <input
             type="password"
             name="password"
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
+            onChange={passwordOnChangeHandler}
             onBlur={() => {
               if (password === "") {
                 setPasswordError(true);
