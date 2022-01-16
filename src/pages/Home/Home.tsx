@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../../contexts/auth";
+import { Link } from "react-router-dom";
+
+import "./Home.css";
 
 const Home: React.FC = () => {
   const { user, logOut }: any = useAuthContext();
+  const [catImageUrl, setCatImageUrl]: any = useState("");
 
   const logOutHandler = async () => {
     try {
@@ -12,10 +16,28 @@ const Home: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      let result = await fetch("http://placekitten.com/g/640/480");
+      // result = await result.json();
+      setCatImageUrl(result.url);
+      console.log(result);
+    };
+    fetchData();
+  }, []);
+
   return (
-    <div>
+    <div className="homepage-div">
       <h1>Welcome {user.email}!</h1>
-      <button onClick={logOutHandler}>logout</button>
+      <div className="cat-div">
+        <img src={catImageUrl}></img>
+      </div>
+      <div className="cat-button-container">
+        <button onClick={logOutHandler}>logout</button>
+        <Link to="/help">
+          <button>Help!</button>
+        </Link>
+      </div>
     </div>
   );
 };

@@ -43,6 +43,7 @@ const Login: React.FC = () => {
 
   return (
     <div className="login">
+      <img src="https://c.tenor.com/tHGomflMSuIAAAAd/cat-computer.gif" />
       <div className="title-div">
         <h1>
           Log in to see awesome &#128049;&#128049;&#128049;!<span>|</span>

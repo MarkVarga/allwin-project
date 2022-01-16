@@ -35,6 +35,7 @@ export const AuthContextProvider = ({ children }: any) => {
   const logOut = () => {
     localStorage.clear();
     localStorage.setItem("token", "");
+    setUser("");
     window.location.reload();
     return signOut(auth);
   };
