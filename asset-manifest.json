@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/allwin-project/static/css/main.bea01e27.css",
+    "main.js": "/allwin-project/static/js/main.acad3616.js",
+    "index.html": "/allwin-project/index.html",
+    "main.bea01e27.css.map": "/allwin-project/static/css/main.bea01e27.css.map",
+    "main.acad3616.js.map": "/allwin-project/static/js/main.acad3616.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bea01e27.css",
+    "static/js/main.acad3616.js"
+  ]
+}
