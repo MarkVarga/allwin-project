@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Form from "../../components/Form";
 import { useAuthContext } from "../../contexts/auth";
 import "./Login.css";
@@ -13,17 +13,31 @@ const Login: React.FC = () => {
   const [passwordError, setPasswordError] = useState(true);
   const [emailErrorMessage, setEmailErrorMessage] = useState("");
   const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
-  const { logIn }: any = useAuthContext();
+  const { logIn, googleLogin }: any = useAuthContext();
 
   const emailValidationPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/;
   const passwordValidationPattern = /(?=.*\d)(?=.*[a-z]).{6,}/;
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       await logIn(email, password);
+      navigate("/home");
     } catch (err: any) {
       setGeneralError(true);
+      setGeneralErrorMessage(err.message);
+    }
+  };
+
+  const handleGoogleLogin = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      await googleLogin();
+      navigate("/home");
+    } catch (err: any) {
       setGeneralErrorMessage(err.message);
     }
   };
@@ -52,6 +66,7 @@ const Login: React.FC = () => {
         passwordValidationPattern={passwordValidationPattern}
         generalError={generalError}
         generalErrorMessage={generalErrorMessage}
+        handleGoogleLogin={handleGoogleLogin}
         handleSubmit={handleSubmit}
       />
     </div>

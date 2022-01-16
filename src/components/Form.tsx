@@ -20,6 +20,7 @@ const Form = ({
   setGeneralError,
   generalErrorMessage,
   setGeneralErrorMessage,
+  handleGoogleLogin,
   handleSubmit,
 }: any) => {
   const location = useLocation();
@@ -91,18 +92,25 @@ const Form = ({
             <p className="error-message">{passwordErrorMessage}</p>
           )}
         </div>
-        <div className="button-container">
-          {location.pathname === "/" && (
+        {location.pathname === "/" && (
+          <div className="button-container">
             <button disabled={emailError || passwordError} type="submit">
               &#128008; Login &#128008;
             </button>
-          )}
-          {location.pathname === "/signup" && (
+
+            <button onClick={handleGoogleLogin} type="submit">
+              &#128008; Login with Google &#128008;
+            </button>
+          </div>
+        )}
+
+        {location.pathname === "/signup" && (
+          <div className="button-container">
             <button disabled={emailError || passwordError} type="submit">
               &#128008; Sign up &#128008;
             </button>
-          )}
-        </div>
+          </div>
+        )}
         {location.pathname === "/" && (
           <p>
             Not a user? <Link to="/signup">Sign up</Link>
