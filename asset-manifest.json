@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/allwin-project/static/css/main.3704a356.css",
-    "main.js": "/allwin-project/static/js/main.ae89efa3.js",
+    "main.js": "/allwin-project/static/js/main.abe2860b.js",
     "index.html": "/allwin-project/index.html",
     "main.3704a356.css.map": "/allwin-project/static/css/main.3704a356.css.map",
-    "main.ae89efa3.js.map": "/allwin-project/static/js/main.ae89efa3.js.map"
+    "main.abe2860b.js.map": "/allwin-project/static/js/main.abe2860b.js.map"
   },
   "entrypoints": [
     "static/css/main.3704a356.css",
-    "static/js/main.ae89efa3.js"
+    "static/js/main.abe2860b.js"
   ]
 }
