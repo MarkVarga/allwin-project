@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import _ from "lodash";
+import { debounce } from "debounce";
 import "./Form.css";
 
 const Form = ({
@@ -27,19 +29,17 @@ const Form = ({
   const location = useLocation();
 
   const passwordOnChangeHandler = (e: any) => {
-    setPassword(e.target.value);
-    setTimeout(() => {
-      if (password === "") {
-        setPasswordError(true);
-        setPasswordErrorMessage("this field cannot be empty");
-      } else if (password.match(passwordValidationPattern) == null) {
-        setPasswordError(true);
-        setPasswordErrorMessage("this password is not valid");
-      } else {
-        setPasswordError(false);
-        setPasswordErrorMessage("");
-      }
-    }, 1000);
+    debounce(setPassword(e.target.value), 1000);
+    if (password === "") {
+      setPasswordError(true);
+      setPasswordErrorMessage("this field cannot be empty");
+    } else if (password.match(passwordValidationPattern) == null) {
+      setPasswordError(true);
+      setPasswordErrorMessage("this password is not valid");
+    } else {
+      setPasswordError(false);
+      setPasswordErrorMessage("");
+    }
   };
 
   return (
@@ -74,7 +74,22 @@ const Form = ({
           <input
             type="password"
             name="password"
-            onChange={passwordOnChangeHandler}
+            onChange={debounce((e: any) => {
+              setPassword(e.target.value);
+              console.log(e.target.value);
+              if (e.target.value === "") {
+                setPasswordError(true);
+                setPasswordErrorMessage("this field cannot be empty");
+              } else if (
+                e.target.value.match(passwordValidationPattern) == null
+              ) {
+                setPasswordError(true);
+                setPasswordErrorMessage("this password is not valid");
+              } else {
+                setPasswordError(false);
+                setPasswordErrorMessage("");
+              }
+            }, 1000)}
             onBlur={() => {
               if (password === "") {
                 setPasswordError(true);

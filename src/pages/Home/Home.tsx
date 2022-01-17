@@ -3,6 +3,7 @@ import { useAuthContext } from "../../contexts/auth";
 import { Link } from "react-router-dom";
 
 import "./Home.css";
+import { setSourceMapRange } from "typescript";
 
 const Home: React.FC = () => {
   const { user, logOut }: any = useAuthContext();
@@ -18,7 +19,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let result = await fetch("http://placekitten.com/g/640/480");
+      let result = await fetch("https://placekitten.com/g/640/480");
       // result = await result.json();
       setCatImageUrl(result.url);
       console.log(result);
