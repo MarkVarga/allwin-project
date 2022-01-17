@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import _ from "lodash";
 import { debounce } from "debounce";
 import "./Form.css";
 
