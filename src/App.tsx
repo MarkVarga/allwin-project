@@ -15,7 +15,10 @@ const App: React.FC = () => {
   return (
     <AuthContextProvider>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route
+          path="/"
+          element={localStorage.getItem("token") ? <Home /> : <Login />}
+        />
         <Route path="/signup" element={<Signup />} />
         <Route
           path="/home"
